@@ -1,3 +1,2 @@
-// Preencha com o OAuth Client ID do tipo 'Aplicativo da Web' do Google Cloud.
-// Autorize a origem HTTPS exata do seu PWA no console do Google.
-window.CARTEIRA_GOOGLE_CLIENT_ID = 'COLE_SEU_CLIENT_ID_AQUI.apps.googleusercontent.com';
+// OAuth Client ID público. Nunca inclua Client Secret neste repositório.
+window.CARTEIRA_GOOGLE_CLIENT_ID = '500623817375-hnepg8dcfj87edkpjtrvunkmejrfqhem.apps.googleusercontent.com';
