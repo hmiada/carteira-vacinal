@@ -1,19 +1,27 @@
-# Minha Carteira Vacinal — login Google configurado
+# Minha Carteira Vacinal — Etapa 3 (base PNI + SBIm)
 
-**Esta distribuição pública não contém o histórico pessoal de vacinação.**
+## Publicação segura
+Envie **somente os arquivos desta pasta pública** para a raiz do repositório GitHub Pages. 
+**NÃO publique** o arquivo `HISTORICO-PRIVADO-importacao-39-vacinas.json`, fotos, comprovantes ou backups.
 
-## Publicação no GitHub Pages
+## Importação privada
+1. Salve `HISTORICO-PRIVADO-importacao-39-vacinas.json` no app Arquivos do iPhone.
+2. Atualize os arquivos públicos no GitHub e aguarde a publicação.
+3. Abra o PWA e vá a Histórico → Importar histórico privado (JSON).
+4. Selecione o arquivo local e confirme a importação.
+5. Confira 39 aplicações confirmadas + 1 registro em revisão. A importação não exclui registros existentes e ignora IDs ou vacina/data iguais.
+6. Faça um backup JSON novo e mantenha-o fora do GitHub.
 
-1. No repositório `hmiada/carteira-vacinal`, envie os arquivos desta pasta para a raiz, substituindo os existentes.
-2. Confirme que `historico-inicial.js` NÃO está no repositório nem no histórico de commits.
-3. Aguarde o deploy em Actions/Pages e abra `https://hmiada.github.io/carteira-vacinal/` em uma aba privada ou recarregue para atualizar o cache.
-4. Clique em **Entrar com Google**. O Client ID público já está em `auth-config.js`. No Google Cloud, a origem JavaScript autorizada deve ser `https://hmiada.github.io` (sem caminho).
-5. O aplicativo não inclui dados vacinais pré-carregados. Importe um **backup JSON privado** pela seção Backup, ou cadastre as vacinas manualmente. Nunca envie o backup ao GitHub.
+## Motor de regras
+`rules.js` contém a primeira versão conservadora, separando PNI 2026 e SBIm 2026/2027.
+As regras NÃO são atualizadas automaticamente e NÃO substituem avaliação médica.
+Algumas regras são apenas alertas de verificação, não cálculo completo de elegibilidade.
+PNI: https://www.gov.br/saude/pt-br/vacinacao/calendario
+SBIm: https://sbim.org.br/calendario-de-vacinacao/adultos-21-a-59-anos
 
-## Segurança e limitações
-
-- Google OAuth permite entrada pela interface, mas **não criptografa nem isola o IndexedDB**. Não use em dispositivos compartilhados.
-- O login exige internet; registros permanecem no dispositivo. Não há sincronização.
-- O arquivo JSON de backup não é criptografado; guarde-o em local privado.
-- Após substituir arquivos no GitHub Pages, o Service Worker pode manter uma versão antiga por um curto período.
-- O app não calcula recomendações oficiais de vacinação nesta versão.
+## Privacidade e limitações
+- Login Google não criptografa IndexedDB nem isola usuários no mesmo navegador.
+- Não há sincronização em nuvem.
+- O backup JSON não é criptografado.
+- O registro fictício de teste deve ser removido antes da importação definitiva.
+- A contagem de 39 é esperada apenas se não houver outros registros confirmados locais.
